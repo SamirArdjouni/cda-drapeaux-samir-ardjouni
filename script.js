@@ -27,6 +27,11 @@ $( ".flagLeft" ).click(function() {
     
   });
 
+  // ******** rendre invisible le 2eme tableau  *******************
+// document.getElementById(fieldset2).style.display='none';
+// //   var invisibleFlag2 = document.getElementById(#fieldset2);
+//   invisibleFlag2.hidden();
+$("#fieldset2").hide();
 //   *************** bouton valider *********************************
 
 $("#buttonValidate").click(function(){
@@ -34,8 +39,9 @@ $("#buttonValidate").click(function(){
     var p = document.getElementById("buttonValidate");
     if (map.get("france") == country ) {
         console.log("bingo c'est trouvé");
-        document.getElementById("pays").textContent = "FRANCE";
-
+     //   document.getElementById("pays").textContent = "FRANCE";
+        $("#fieldset2").show();
+        $("#fieldset1").hide();
     }else{
         console.log("c'est raté"); 
     }
