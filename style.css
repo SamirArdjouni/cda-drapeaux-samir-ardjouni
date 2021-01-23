@@ -18,7 +18,7 @@ legend{
 
 /* ---------- CONTENER -------------- */
 
-.contener{
+#contener{
     background-color: plum;
     display: flex;
     flex-direction: column;
@@ -31,12 +31,14 @@ legend{
     /* flex-grow: 1; */
     height: 30%;
     justify-content: center;
+    align-items: center;
 
 }
 
-.contenerMiddle{
+#contenerMiddle{
     display: flex;
     justify-content: center;
+    align-items: center;
     height: 40%;
 
 }
@@ -66,14 +68,17 @@ height: 5%;
 .flagLeft{
     background-color: yellow;
     width: 20%;
+    height: 80%;
 }
 
 .flagMiddle{
     background-color: red;
     width: 20%;
+    height: 80%;
 }
 .flagRight{
     background-color: green;
     width: 20%;
+    height: 80%;
 }
 
