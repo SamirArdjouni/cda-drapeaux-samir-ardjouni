@@ -15,10 +15,9 @@ $( ".flagLeft" ).click(function() {
     var colore = couleur[i];
     $(this).css("backgroundColor", colore);
     nbClic++ 
-    // $('#headRight')..append(nbClic++);
-    
     $('#headRight').text("").append("Nombre de clic: " + nbClic);
     demarrerChrono();
+    verifFlagOK()
   });
 
   $( ".flagMiddle" ).click(function() {
@@ -27,7 +26,7 @@ $( ".flagLeft" ).click(function() {
     $(this).css("backgroundColor", colore);
     nbClic++;
     $('#headRight').text("").append("Nombre de clic: " + nbClic);
-   
+    verifFlagOK()
   });
 
   $( ".flagRight" ).click(function() {
@@ -35,28 +34,33 @@ $( ".flagLeft" ).click(function() {
     var colore = couleur[k];
     $(this).css("backgroundColor", colore);
     nbClic++;
-    $('#headRight').text("").append("Nombre de clic: " + nbClic); // ajout nb clicks
-    
-    
+    $('#headRight').text("").append("Nombre de clic: " + nbClic); // ajout nb clicks    
+    verifFlagOK()
   });
 
-$("#buttonValidate").click(function(){
+// *************   verif si le drapeau est ok   *********************************************
+  function verifFlagOK() {
     var country = couleur[i] + '/' + couleur[j] + '/' +couleur[k];
     if (colorsFlag[countTabCountrie] == country ) {
         console.log("bingo c'est trouvé");
+        setInterval(changeFlag, 1000); // retarder le new flag de 1s
         countTabCountrie++;
         loopCountries++;
-        changeFlag();
         lvl++;
         $('#headLeft').text("").append('Drapeaux trouvés: ' +lvl+'/'+nbTotalLvl);
     }else{
         console.log("c'est raté"); 
-         document.getElementById("contenerMiddle").style.flexDirection = "column"; marginTop = "90%";
-         document.getElementById("contenerMiddle").style.textAlign='center';
-         document.getElementById("contenerMiddle").style.justifyContent='center';
-        
     }
-});
+  }
+
+// ********* fonction pour changer disposition flag ************************
+
+function mooveFlag() {
+    document.getElementById("contenerMiddle").style.flexDirection = "column"; marginTop = "90%";
+    document.getElementById("contenerMiddle").style.textAlign='center';
+    document.getElementById("contenerMiddle").style.justifyContent='center';
+}
+
 // **********  funtion pour faire appel a un nouveau drapeau
 function changeFlag() {
     var count = countries[loopCountries];
@@ -64,9 +68,12 @@ function changeFlag() {
     $(".flagRight" ).css({"backgroundColor":"white"});
     $(".flagMiddle" ).css({"backgroundColor":"white"});
     $(".flagLeft" ).css({"backgroundColor":"white"});
-    nbClic++;
     var div = document.getElementById("div1");
-//div.style.marginTop = ".25cm";
+   if (count== "allemand" || count == "hollandais") {
+    mooveFlag();
+    alert("je suis entré");
+   }
+    
 }
 
 // ******* FUNCTION COMPTEUR ET TIMER********************************
@@ -91,7 +98,23 @@ function demarrerChrono(){
     }setInterval(chrono, 1000);
 } 
    
- 
+// $("#buttonValidate").click(function(){
+//     var country = couleur[i] + '/' + couleur[j] + '/' +couleur[k];
+//     if (colorsFlag[countTabCountrie] == country ) {
+//         console.log("bingo c'est trouvé");
+//         countTabCountrie++;
+//         loopCountries++;
+//         changeFlag();
+//         lvl++;
+//         $('#headLeft').text("").append('Drapeaux trouvés: ' +lvl+'/'+nbTotalLvl);
+//     }else{
+//         console.log("c'est raté"); 
+//          document.getElementById("contenerMiddle").style.flexDirection = "column"; marginTop = "90%";
+//          document.getElementById("contenerMiddle").style.textAlign='center';
+//          document.getElementById("contenerMiddle").style.justifyContent='center';
+        
+//     }
+// });
 
 
 
