@@ -1,15 +1,12 @@
 var couleur = [ 'white', 'red','blue', 'yellow', 'green', 'black'];
 var countries = ['france', 'belgique', 'allemand', 'hollandais'];
 var colorsFlag= ['blue/white/red', 'black/yellow/red', 'black/red/yellow', 'red/white/blue'];
-// var france = "blue/white/red";
-// var belgique = "black/yellow/red";
-// let map = new Map(); // creation tableau map a 2valeurs
-// map.set('france', 'blue/white/red');
-// map.set('belgique', 'black/yellow/red');
 var i=0,j=0,k = 0; // variable compteur changement couleur
 var countTabCountrie = 0;
 var loopCountries = 0;
 var nbClic = 0;
+var lvl = 0;
+var nbTotalLvl = countries.length;
 
 // ***** FONCTION CHANGEMENT COULEURS ***************
 
@@ -17,7 +14,11 @@ $( ".flagLeft" ).click(function() {
     i == couleur.length ? i=0 : i++;
     var colore = couleur[i];
     $(this).css("backgroundColor", colore);
-    nbClic++;
+    nbClic++ 
+    // $('#headRight')..append(nbClic++);
+    
+    $('#headRight').text("").append("Nombre de clic: " + nbClic);
+    demarrerChrono();
   });
 
   $( ".flagMiddle" ).click(function() {
@@ -25,6 +26,8 @@ $( ".flagLeft" ).click(function() {
     var colore = couleur[j];
     $(this).css("backgroundColor", colore);
     nbClic++;
+    $('#headRight').text("").append("Nombre de clic: " + nbClic);
+   
   });
 
   $( ".flagRight" ).click(function() {
@@ -32,6 +35,8 @@ $( ".flagLeft" ).click(function() {
     var colore = couleur[k];
     $(this).css("backgroundColor", colore);
     nbClic++;
+    $('#headRight').text("").append("Nombre de clic: " + nbClic); // ajout nb clicks
+    
     
   });
 
@@ -42,7 +47,8 @@ $("#buttonValidate").click(function(){
         countTabCountrie++;
         loopCountries++;
         changeFlag();
-        nbClic++;
+        lvl++;
+        $('#headLeft').text("").append('Drapeaux trouvés: ' +lvl+'/'+nbTotalLvl);
     }else{
         console.log("c'est raté"); 
          document.getElementById("contenerMiddle").style.flexDirection = "column"; marginTop = "90%";
@@ -65,12 +71,12 @@ function changeFlag() {
 
 // ******* FUNCTION COMPTEUR ET TIMER********************************
 $(document).ready(function(){
-    $("#headLeft").append('le comptefeur isss');
-    $("#headMiddle").append(' 00:00:00(HH:MM:SS) ');
+    $("#headLeft").append(lvl+'/'+nbTotalLvl);
+    $("#headMiddle").append(' 00:00(MM:SS) ');
     $("#headRight").append(nbClic)
 });
 
-$(document).ready(function() {
+function demarrerChrono(){
     var seconde = 0;
     var minute = 0;
    var heure = 0;
@@ -83,7 +89,9 @@ $(document).ready(function() {
         }
         $("#headMiddle").text(heure+':'+minute+':'+ seconde);
     }setInterval(chrono, 1000);
- });
+} 
+   
+ 
 
 
 
@@ -176,8 +184,10 @@ $(document).ready(function() {
 //     $(this).css("backgroundColor", colore);
 // }
 
-
-
-        
+// var france = "blue/white/red";
+// var belgique = "black/yellow/red";
+// let map = new Map(); // creation tableau map a 2valeurs
+// map.set('france', 'blue/white/red');
+// map.set('belgique', 'black/yellow/red');
     
     
