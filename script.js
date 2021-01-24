@@ -9,6 +9,7 @@ var colorsFlag= ['blue/white/red', 'black/yellow/red', 'black/red/yellow', 'red/
 var i=0,j=0,k = 0; // variable compteur changement couleur
 var countTabCountrie = 0;
 var loopCountries = 0;
+var nbClic = 0;
 
 // ***** FONCTION CHANGEMENT COULEURS ***************
 
@@ -16,18 +17,21 @@ $( ".flagLeft" ).click(function() {
     i == couleur.length ? i=0 : i++;
     var colore = couleur[i];
     $(this).css("backgroundColor", colore);
+    nbClic++;
   });
 
   $( ".flagMiddle" ).click(function() {
     j == couleur.length ? j=0 : j++;
     var colore = couleur[j];
     $(this).css("backgroundColor", colore);
+    nbClic++;
   });
 
   $( ".flagRight" ).click(function() {
     k == couleur.length ? k=0 : k++;
     var colore = couleur[k];
     $(this).css("backgroundColor", colore);
+    nbClic++;
     
   });
 
@@ -38,17 +42,13 @@ $("#buttonValidate").click(function(){
         countTabCountrie++;
         loopCountries++;
         changeFlag();
-        // showFlex( "contenerMiddle" );
+        nbClic++;
     }else{
         console.log("c'est raté"); 
-        // showFlex( "contenerMiddle" );
-        // document.getElementById("contenerMiddle").style.flexDirection = "column"; top:'50%';left:'50%'; margin-left: 50%}
-        //  document.getElementById("contenerMiddle").style.flexDirection = "column"; justify-content:center; align-items: center;
          document.getElementById("contenerMiddle").style.flexDirection = "column"; marginTop = "90%";
          document.getElementById("contenerMiddle").style.textAlign='center';
          document.getElementById("contenerMiddle").style.justifyContent='center';
-         document.getElementById('conteneur').style.display='inline-grid';
-      
+        
     }
 });
 // **********  funtion pour faire appel a un nouveau drapeau
@@ -58,15 +58,50 @@ function changeFlag() {
     $(".flagRight" ).css({"backgroundColor":"white"});
     $(".flagMiddle" ).css({"backgroundColor":"white"});
     $(".flagLeft" ).css({"backgroundColor":"white"});
-  
+    nbClic++;
     var div = document.getElementById("div1");
-div.style.marginTop = ".25cm";
+//div.style.marginTop = ".25cm";
+}
 
+// ******* FUNCTION COMPTEUR ET TIMER********************************
+$(document).ready(function(){
+    $("#headLeft").append('le comptefeur isss');
+    $("#headMiddle").append(' 00:00:00(HH:MM:SS) ');
+    $("#headRight").append(nbClic)
+});
+
+$(document).ready(function() {
+    var seconde = 0;
+    var minute = 0;
+   var heure = 0;
+    function chrono(){
+        if (seconde<59) {
+            seconde ++;
+        }else{
+            seconde =0;
+            minute++;
+        }
+        $("#headMiddle").text(heure+':'+minute+':'+ seconde);
+    }setInterval(chrono, 1000);
+ });
+
+
+
+// $(document).ready(function() {
+//    var compteur = 0;
+//    setInterval(function(){
+//        compteur++;
+//        $("#").text(compteur);
+//    },1000);
+// });
+
+
+// ****************************************************************
 
     // if (countries[loopCountries]== "belgique") {
     //     $('#contenerMiddle').css('display', 'bloc');
     // }
-}
+
 
 // function centerDiv() {
 //     var p = document.getElementById("contenerMiddle");
