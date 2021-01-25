@@ -5,6 +5,7 @@ fieldset{
     margin: auto;
     text-align: center;
     padding-bottom: 30px;
+    display: none;
 }
 
 div{
@@ -67,19 +68,65 @@ height: 5%;
 }
 
 .flagLeft{
-    background-color: yellow;
+    background-color: white;
     width: 20%;
     height: 80%;
 }
 
 .flagMiddle{
-    background-color: red;
+    background-color: white;
     width: 20%;
     height: 80%;
 }
 .flagRight{
-    background-color: green;
+    background-color: white;
     width: 20%;
     height: 80%;
 }
 
+
+/************* POPUP ******************* */
+
+#btnPopup{
+    background-color: orange;
+    padding: 1em 2em;
+    font-size: 14pt;
+    color: black;
+    text-align: center;
+    align-items: center;
+    margin-left: 45%;
+}
+
+#btnPopup:hover{
+    background-color: gainsboro;
+}
+
+#contourPopup{
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+}
+
+#popup{
+    margin: 8% auto;
+    width: 70%;
+    background-color: rgb(228, 228, 228);
+    border-radius: 10%;
+    box-shadow: 15px 20px 0 rgba(0, 0, 0, 0.5);
+    padding: 1em;
+}
+
+#titree{
+    text-align: center;
+}
+
+header {
+    display: none;
+}
+
+fieldset{
+    display: none;
+}
